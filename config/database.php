@@ -18,16 +18,19 @@ if (!file_exists($vendorAutoload)) {
 require_once $vendorAutoload;
 
 // ----------------------------------------------------------------
-// Load Private Environment File
+// Load Environment Files (.env from project root, with optional private/hrms.env)
 // ----------------------------------------------------------------
+$projectRoot = dirname(__DIR__);
+if (file_exists($projectRoot . DIRECTORY_SEPARATOR . '.env')) {
+    $dotenvProject = Dotenv\Dotenv::createUnsafeImmutable($projectRoot, '.env');
+    $dotenvProject->safeLoad();
+}
+
 $privateEnvDir = dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'private';
-
-$dotenv = Dotenv\Dotenv::createUnsafeImmutable(
-    $privateEnvDir,
-    'hrms.env'
-);
-
-$dotenv->safeLoad();
+if (file_exists($privateEnvDir . DIRECTORY_SEPARATOR . 'hrms.env')) {
+    $dotenvPrivate = Dotenv\Dotenv::createUnsafeImmutable($privateEnvDir, 'hrms.env');
+    $dotenvPrivate->safeLoad();
+}
 
 // ----------------------------------------------------------------
 // Application Environment Initialization
