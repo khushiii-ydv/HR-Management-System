@@ -276,11 +276,11 @@ include __DIR__ . '/../includes/header.php';
         </div>
     <?php endif; ?>
 
+    <?php if (hasRole('admin')): ?>
     <div class="row g-4">
-        <!-- Left Column -->
+        <!-- Left Column (Admin Management) -->
         <div class="col-lg-7">
             <!-- Organization Profile (Admin Only) -->
-            <?php if (hasRole('admin')): ?>
                 <div class="card mb-4">
                     <div class="card-header">
                         <h5 class="card-title"><i class="bi bi-building text-primary"></i> Organization Profile</h5>
@@ -488,7 +488,6 @@ include __DIR__ . '/../includes/header.php';
                         </div>
                     </div>
                 </div>
-            <?php endif; ?>
         </div>
 
         <!-- Right Column -->
@@ -577,6 +576,96 @@ include __DIR__ . '/../includes/header.php';
             </div>
         </div>
     </div>
+    <?php else: ?>
+    <!-- Centered Layout for HR & Employee -->
+    <div class="row justify-content-center g-4">
+        <div class="col-lg-6 col-md-8 col-sm-11">
+            <!-- Security & Password Update (Centered) -->
+            <div class="card mb-4 shadow-sm border">
+                <div class="card-header bg-white border-bottom py-3 text-center">
+                    <h5 class="card-title mb-0 fw-semibold text-dark"><i class="bi bi-shield-lock text-primary me-2"></i> Security & Password</h5>
+                    <small class="text-secondary">Update your login password</small>
+                </div>
+                <div class="card-body p-4">
+                    <form action="<?= BASE_URL ?>settings/index.php" method="POST">
+                        <input type="hidden" name="action" value="change_password">
+
+                        <div class="mb-3">
+                            <label class="form-label fw-medium" for="cur_pass_center">Current Password <span class="required text-danger">*</span></label>
+                            <input type="password" class="form-control" id="cur_pass_center" name="current_password" required placeholder="Enter current password">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-medium" for="new_pass_center">New Password <span class="required text-danger">*</span></label>
+                            <input type="password" class="form-control" id="new_pass_center" name="new_password" minlength="6" required placeholder="Enter new password (min. 6 characters)">
+                            <small class="text-muted" style="font-size: 0.72rem;">Minimum 6 characters.</small>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-medium" for="confirm_pass_center">Confirm New Password <span class="required text-danger">*</span></label>
+                            <input type="password" class="form-control" id="confirm_pass_center" name="confirm_password" minlength="6" required placeholder="Confirm new password">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 py-2">
+                            <i class="bi bi-key me-1"></i> Update Password
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Official Google Account Linking Card -->
+            <div class="card mb-4 shadow-sm border">
+                <div class="card-header bg-white border-bottom py-3 text-center">
+                    <h5 class="card-title mb-0 fw-semibold text-dark"><i class="bi bi-google text-primary me-2"></i> Google Account Single Sign-On</h5>
+                </div>
+                <div class="card-body p-4">
+                    <?php if (!empty($userFull['google_id'])): ?>
+                        <div class="p-3 rounded-3 border mb-3" style="background: #E8F7EF; border-color: #16A36A !important;">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="badge bg-success text-white"><i class="bi bi-check-circle-fill me-1"></i> Linked</span>
+                                <span class="small text-muted font-monospace" style="font-size: 0.7rem;">ID: <?= substr($userFull['google_id'], 0, 12) ?>...</span>
+                            </div>
+                            <div class="fw-bold text-dark small mb-1">Linked Google Email:</div>
+                            <div class="font-monospace text-primary small mb-3"><?= htmlspecialchars($userFull['google_email'] ?? $userFull['email']) ?></div>
+                            <form action="<?= BASE_URL ?>settings/index.php" method="POST" onsubmit="return confirm('Unlink your Google account? You will need to use your password to sign in.');">
+                                <input type="hidden" name="action" value="unlink_google">
+                                <button type="submit" class="btn btn-outline-danger btn-sm w-100">
+                                    <i class="bi bi-x-circle me-1"></i> Unlink Google Account
+                                </button>
+                            </form>
+                        </div>
+                    <?php else: ?>
+                        <div class="p-3 bg-light rounded-3 border mb-3 text-center">
+                            <i class="bi bi-google text-secondary fs-2 mb-2 d-block"></i>
+                            <h6 class="fw-bold text-dark mb-1">No Google Account Linked</h6>
+                            <p class="text-secondary small mb-3">Link your corporate Google account to enable 1-click Single Sign-On.</p>
+                            <a href="<?= BASE_URL ?>auth/google_auth.php?action=link" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-link-45deg me-1"></i> Link Google Account
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                    <small class="text-muted d-block text-center" style="font-size: 0.73rem;">
+                        <i class="bi bi-info-circle me-1"></i> The authenticated Google email must match your registered corporate email (<code><?= htmlspecialchars(maskEmail($userFull['email'])) ?></code>).
+                    </small>
+                </div>
+            </div>
+
+            <!-- Current Session Details Card -->
+            <div class="card shadow-sm border mb-4">
+                <div class="card-header bg-white border-bottom py-3">
+                    <h6 class="card-title mb-0 fw-semibold text-dark"><i class="bi bi-person-badge text-secondary me-2"></i> Current Session Details</h6>
+                </div>
+                <div class="card-body p-4 small">
+                    <div class="mb-2"><strong>Signed in as:</strong> <?= htmlspecialchars($currentUser['name']) ?></div>
+                    <div class="mb-2"><strong>Email:</strong> <?= htmlspecialchars($currentUser['email']) ?></div>
+                    <div class="mb-2"><strong>Assigned Role:</strong> <span class="badge bg-primary text-uppercase"><?= htmlspecialchars($currentUser['role']) ?></span></div>
+                    <div class="mb-2"><strong>Email Verified:</strong> <span class="text-success"><i class="bi bi-check-circle-fill"></i> Verified</span></div>
+                    <div><strong>Session Status:</strong> <span class="text-success"><i class="bi bi-circle-fill" style="font-size: 0.6rem;"></i> Active & Encrypted</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
 </div>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>

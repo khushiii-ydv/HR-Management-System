@@ -84,7 +84,7 @@ if (isGoogleOAuthConfigured()) {
             <p class="text-secondary small mb-2">Test Google OAuth identity verification and email matching rule directly:</p>
             
             <form action="<?= BASE_URL ?>auth/google_callback.php" method="POST">
-                <input type="hidden" name="simulation_token" value="<?= hash_hmac('sha256', 'google_sim', 'ky_hrms_salt_2026') ?>">
+                <input type="hidden" name="simulation_token" value="<?= hash_hmac('sha256', 'google_sim', 'hrms_salt_2026') ?>">
                 <div class="mb-2">
                     <label class="form-label small fw-semibold text-dark mb-1">Simulated Google Account Email:</label>
                     <input type="email" name="verified_google_email" class="form-control form-control-sm" placeholder="e.g. khushi.ydv@gmail.com" required>

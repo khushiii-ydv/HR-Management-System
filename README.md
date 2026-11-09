@@ -22,7 +22,7 @@ The system contains authentic, verified accounts with dedicated organizational r
 
 | User ID | Full Name | Registered Email | Employee ID | Assigned Role | Account Status | Email Verification |
 | :---: | :--- | :--- | :---: | :---: | :---: | :---: |
-| **1** | **Khushi Yadav** | `khushi.ydv0306@gmail.com` | `EMP-1001` | **Administrator** | Active | Verified (Google OAuth Linked) |
+| **1** | **Khushi Yadav** | `khushi.ydv0306@gmail.com` | *N/A (System Administrator)* | **Administrator** | Active | Verified (Google OAuth Linked) |
 | **2** | **Anita yadav** | `ay3420956@gmail.com` | `EMP-1002` | **HR Administrator** | Active | Verified (2FA Enabled) |
 | **3** | **Anshu yadav** | `anshu.ydv0415@gmail.com` | `EMP-1003` | **Employee (Senior Engineer)** | Active | Verified (2FA Enabled) |
 | **4** | **anshuka yadav** | `anshuka.yadav27@gmail.com` | `EMP-1004` | **Employee (Lead UI/UX)** | Active | Verified (2FA Enabled) |

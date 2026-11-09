@@ -165,9 +165,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Left Branded Presentation Side -->
     <div class="auth-brand-side">
         <div class="d-flex align-items-center">
-            <div class="brand-logo-icon bg-white text-primary" style="box-shadow: none;">KY</div>
-            <div class="ms-3">
-                <h4 class="mb-0 fw-bold text-white">HRMS</h4>
+            <div>
+                <h3 class="mb-0 fw-bold text-white" style="letter-spacing: 0.5px;">HRMS</h3>
                 <small class="text-white-50">Enterprise Human Resource Cloud</small>
             </div>
         </div>

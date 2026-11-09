@@ -72,7 +72,7 @@ CREATE TABLE `company_settings` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `company_settings` (`id`, `company_name`, `company_email`, `company_phone`, `company_address`, `company_logo`, `timezone`, `currency`, `updated_at`, `google_client_id`, `google_client_secret`, `google_redirect_uri`, `require_2fa`) VALUES
-('1', 'HRMS Solutions Inc.', 'support@kyhrms.com', '+1 (555) 345-6789', '500 Tech Parkway, Suite 700, San Francisco, CA 94107', NULL, 'Asia/Kolkata', 'INR', '2026-11-06 11:18:40', NULL, NULL, 'http://localhost/hr-management-system/auth/google_callback.php', '1');
+('1', 'HRMS Solutions Inc.', 'support@hrms.com', '+1 (555) 345-6789', '500 Tech Parkway, Suite 700, San Francisco, CA 94107', NULL, 'Asia/Kolkata', 'INR', '2026-11-06 11:18:40', NULL, NULL, 'http://localhost/hr-management-system/auth/google_callback.php', '1');
 
 DROP TABLE IF EXISTS `departments`;
 CREATE TABLE `departments` (

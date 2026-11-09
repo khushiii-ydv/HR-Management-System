@@ -22,7 +22,7 @@ $action = 'login';
 try {
     // 1. Handle Local Test Simulator (Strictly disabled in production)
     if (defined('APP_DEBUG') && APP_DEBUG && defined('APP_ENV') && APP_ENV !== 'production' && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['simulation_token'])) {
-        $expectedToken = hash_hmac('sha256', 'google_sim', 'ky_hrms_salt_2026');
+        $expectedToken = hash_hmac('sha256', 'google_sim', 'hrms_salt_2026');
         if (!hash_equals($expectedToken, $_POST['simulation_token'])) {
             throw new Exception("Security validation failed for simulated OAuth callback.");
         }

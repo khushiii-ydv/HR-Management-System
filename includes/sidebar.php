@@ -11,11 +11,8 @@ $activePage = $activePage ?? '';
 <aside class="app-sidebar">
     <!-- Brand Header -->
     <div class="sidebar-brand">
-        <div class="brand-logo-icon">
-            <span>KY</span>
-        </div>
-        <div class="brand-text">
-            <span class="brand-title">HRMS</span>
+        <div class="brand-text ms-0">
+            <span class="brand-title fs-4 fw-bold" style="letter-spacing: 0.5px;">HRMS</span>
             <span class="brand-subtitle">Enterprise Cloud</span>
         </div>
     </div>

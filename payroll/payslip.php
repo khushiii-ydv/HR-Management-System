@@ -95,9 +95,8 @@ include __DIR__ . '/../includes/header.php';
             <!-- Header with Company Info -->
             <div class="d-flex justify-content-between align-items-start border-bottom pb-4 mb-4">
                 <div class="d-flex align-items-center">
-                    <div class="brand-logo-icon bg-primary text-white me-3" style="width: 48px; height: 48px; font-size: 1.4rem;">KY</div>
                     <div>
-                        <h4 class="fw-bold text-dark mb-0"><?= htmlspecialchars($company['company_name']) ?></h4>
+                        <h4 class="fw-bold text-dark mb-0">HRMS</h4>
                         <small class="text-secondary d-block"><?= htmlspecialchars($company['company_address']) ?></small>
                         <small class="text-secondary"><?= htmlspecialchars($company['company_email']) ?> &bull; <?= htmlspecialchars($company['company_phone']) ?></small>
                     </div>
