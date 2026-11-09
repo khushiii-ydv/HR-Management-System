@@ -73,6 +73,9 @@ scratch/
 *.xlsx
 *.csv
 database/*.sql.bak
+database/*dump*.sql
+database/backup*.sql
+*dump.sql
 
 # ----------------------------------------------------------
 # phpMyAdmin / XAMPP artefacts
